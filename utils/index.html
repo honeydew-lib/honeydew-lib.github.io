@@ -13,7 +13,7 @@
     
     
       
-        <title>How-To Guides - Honeydew</title>
+        <title>Utility Functions - Honeydew</title>
       
     
     
@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mysql" class="md-skip">
+        <a href="#utility-functions" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +97,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How-To Guides
+              Utility Functions
             
           </span>
         </div>
@@ -241,21 +241,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../utils/" class="md-nav__link">
-        Utility Functions
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -268,12 +253,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          How-To Guides
+          Utility Functions
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        How-To Guides
+        Utility Functions
       </a>
       
         
@@ -292,15 +277,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-import-a-csv-file-into-mysql-by-replacing-a-table" class="md-nav__link">
-    How to import a CSV file into MySQL by replacing a table
+  <a href="#honeydew.utils" class="md-nav__link">
+    honeydew.utils
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-import-a-csv-file-into-mysql-by-appending-a-table" class="md-nav__link">
-    How to import a CSV file into MySQL by appending a table
+  <a href="#honeydew.utils.Utils" class="md-nav__link">
+    Utils
+  </a>
+  
+    <nav class="md-nav" aria-label="Utils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#honeydew.utils.Utils.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#honeydew.utils.convert_dt_to_epoch" class="md-nav__link">
+    convert_dt_to_epoch()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#honeydew.utils.convert_epoch_to_dt" class="md-nav__link">
+    convert_epoch_to_dt()
   </a>
   
 </li>
@@ -309,6 +321,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-guides/" class="md-nav__link">
+        How-To Guides
+      </a>
     </li>
   
 
@@ -340,15 +367,42 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-import-a-csv-file-into-mysql-by-replacing-a-table" class="md-nav__link">
-    How to import a CSV file into MySQL by replacing a table
+  <a href="#honeydew.utils" class="md-nav__link">
+    honeydew.utils
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#how-to-import-a-csv-file-into-mysql-by-appending-a-table" class="md-nav__link">
-    How to import a CSV file into MySQL by appending a table
+  <a href="#honeydew.utils.Utils" class="md-nav__link">
+    Utils
+  </a>
+  
+    <nav class="md-nav" aria-label="Utils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#honeydew.utils.Utils.__init__" class="md-nav__link">
+    __init__()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#honeydew.utils.convert_dt_to_epoch" class="md-nav__link">
+    convert_dt_to_epoch()
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#honeydew.utils.convert_epoch_to_dt" class="md-nav__link">
+    convert_epoch_to_dt()
   </a>
   
 </li>
@@ -368,59 +422,274 @@
                   
 
 
-<h1 id="mysql">MySQL</h1>
-<h2 id="how-to-import-a-csv-file-into-mysql-by-replacing-a-table">How to import a CSV file into MySQL by replacing a table</h2>
-<pre><code class="language-Python">from honeydew import mysql_connector
+<h1 id="utility-functions">Utility Functions</h1>
 
-# Instantiate a mysql connector
-mysql_conn = mysql_connector(host = 'mysql.mydomain.com', port = '3306', user = 'my_user', password = 'my_password')
 
-# Import a CSV file into a table by replacing the content
-result = mysql_conn.load_csv_local(
-    db_name='db_name',
-    table_name='table_name',
-    file_name='test.csv',
-    write_disposition='WRITE_TRUNCATE'
-)
+<div class="doc doc-object doc-module">
 
-</code></pre>
-<h2 id="how-to-import-a-csv-file-into-mysql-by-appending-a-table">How to import a CSV file into MySQL by appending a table</h2>
-<pre><code class="language-Python">from honeydew import db_connector
 
-# Instantiate a mysql connector
-mysql_conn = db_connector(db_type = 'mysql', host = 'mysql.mydomain.com', port = '3306', user = 'my_user', password = 'my_password')
+<a id="honeydew.utils"></a>
+  <div class="doc doc-contents first">
 
-# Import a CSV file into a table by replacing the content
-result = mysql_conn.load_csv_local(
-    db_name='db_name',
-    table_name='table_name',
-    file_name='test.csv',
-    write_disposition='WRITE_APPEND'
-)
+  
 
-</code></pre>
-<h1 id="gcp">GCP</h1>
-<h2 id="how-to-instantiate-a-gcp-connector-with-or-without-proxy">How to instantiate a GCP connector with or without proxy</h2>
-<pre><code class="language-Python">from honeydew import gcp_connector
+  <div class="doc doc-children">
 
-# Instantiate a GCP connector with internet connection behind proxy
-g_client = gcp_connector(credential_file='my-secret-credential.json', proxy='http://proxy.mydomain.com:8080')
 
-# Instantiate a GCP connector with direct internet connection
-g_client = gcp_connector(credential_file='my-secret-credential.json')
-</code></pre>
-<h2 id="how-to-query-bigquery-table-and-store-the-result-into-a-dataframe">How to query BigQuery table and store the result into a DataFrame</h2>
-<pre><code class="language-Python">from honeydew import gcp_connector
 
-# Instantiate a GCP connector with internet connection behind proxy
-g_client = gcp_connector(credential_file='my-secret-credential.json', proxy='http://proxy.mydomain.com:8080')
-project_id = 'sweet-honeydew-125283'
 
-# Submit a query and store the result into a DataFrame
-query = 'SELECT * FROM `sweet-honeydew-125283.universe.galaxies` LIMIT 5'
-df = g_client.bq_query_to_dataframe(project_id, query)
-print(df.head())
-</code></pre>
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="honeydew.utils.Utils" class="doc doc-heading">
+        <code>Utils</code>
+
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+
+
+
+        <details class="quote">
+          <summary>Source code in <code>honeydew/utils.py</code></summary>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Utils</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Instantiate utilities.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+        </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="honeydew.utils.Utils.__init__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">()</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Instantiate utilities.</p>
+
+      <details class="quote">
+        <summary>Source code in <code>honeydew/utils.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Instantiate utilities.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="honeydew.utils.convert_dt_to_epoch" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">convert_dt_to_epoch</span><span class="p">(</span><span class="n">dt</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Convert datetime in UTC time zone to epoch (unix time)</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>dt</code></td>
+          <td>
+                <code><span title="datetime.datetime">datetime</span></code>
+          </td>
+          <td><p>datetime</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>result</code></td>          <td>
+                <code>int</code>
+          </td>
+          <td><p>epoch or unix time</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>honeydew/utils.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">convert_dt_to_epoch</span><span class="p">(</span><span class="n">dt</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert datetime in UTC time zone to epoch (unix time)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        dt (datetime): datetime</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        result (int): epoch or unix time</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">calendar</span><span class="o">.</span><span class="n">timegm</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">utctimetuple</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h2 id="honeydew.utils.convert_epoch_to_dt" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">convert_epoch_to_dt</span><span class="p">(</span><span class="n">epoch</span><span class="p">)</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Convert epoch to datetime</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>epoch</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>epoch or unix time</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>result</code></td>          <td>
+                <code><span title="datetime.datetime">datetime</span></code>
+          </td>
+          <td><p>datetime</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>honeydew/utils.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">convert_epoch_to_dt</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert epoch to datetime</span>
+<span class="sd">    Args:</span>
+<span class="sd">        epoch (int): epoch or unix time</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        result (datetime): datetime</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">&gt;</span> <span class="mi">9999999999</span><span class="p">:</span>
+        <span class="n">epoch</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">epoch</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
 
 
 
@@ -441,7 +710,7 @@ print(df.head())
     <nav class="md-footer__inner md-grid" aria-label="Footer" >
       
         
-        <a href="../utils/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Utility Functions" rel="prev">
+        <a href="../ssh/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SSH Connector" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
           </div>
@@ -450,11 +719,26 @@ print(df.head())
               <span class="md-footer__direction">
                 Previous
               </span>
-              Utility Functions
+              SSH Connector
             </div>
           </div>
         </a>
       
+      
+        
+        <a href="../how-to-guides/" class="md-footer__link md-footer__link--next" aria-label="Next: How-To Guides" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              How-To Guides
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
       
     </nav>
   
