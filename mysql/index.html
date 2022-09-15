@@ -247,13 +247,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#honeydew.mysql.MysqlConnector.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#honeydew.mysql.MysqlConnector.load_csv" class="md-nav__link">
     load_csv()
   </a>
@@ -389,13 +382,6 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#honeydew.mysql.MysqlConnector.__init__" class="md-nav__link">
-    __init__()
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#honeydew.mysql.MysqlConnector.load_csv" class="md-nav__link">
     load_csv()
   </a>
@@ -469,6 +455,90 @@
 
   <div class="doc doc-contents ">
 
+  
+      <p>Instantiate a DB connector.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>host</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Database host </p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>port</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Database port</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>user</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Username</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>password</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Password</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>allow_local_infile</code></td>
+          <td>
+                <code>boolean</code>
+          </td>
+          <td><p>Local infile is allowed when the value is True</p></td>
+          <td>
+                <code>False</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>result</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td><p>Value is 'OK' when successful</p></td>
+        </tr>
+    </tbody>
+  </table>
 
 
         <details class="quote">
@@ -580,18 +650,18 @@
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MysqlConnector</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Instantiate a DB connector.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        host (str): Database host </span>
+<span class="sd">        port (str): Database port</span>
+<span class="sd">        user (str): Username</span>
+<span class="sd">        password (str): Password</span>
+<span class="sd">        allow_local_infile (boolean): Local infile is allowed when the value is True</span>
+<span class="sd">    Returns:</span>
+<span class="sd">        result (str): Value is &#39;OK&#39; when successful</span>
+<span class="sd">    &quot;&quot;&quot;</span>   
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">allow_local_infile</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Instantiate a DB connector.</span>
-<span class="sd">        Args:</span>
-<span class="sd">            host (str): Database host </span>
-<span class="sd">            port (str): Database port</span>
-<span class="sd">            user (str): Username</span>
-<span class="sd">            password (str): Password</span>
-<span class="sd">            allow_local_infile (boolean): Local infile is allowed when the value is True</span>
-<span class="sd">        Returns:</span>
-<span class="sd">            result (str): Value is &#39;OK&#39; when successful</span>
-<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
@@ -700,169 +770,6 @@
 
 
 
-
-<div class="doc doc-object doc-function">
-
-
-
-<h3 id="honeydew.mysql.MysqlConnector.__init__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">allow_local_infile</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Instantiate a DB connector.</p>
-
-  <p><strong>Parameters:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-        <th>Default</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>host</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>Database host </p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>port</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>Database port</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>user</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>Username</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>password</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>Password</p></td>
-          <td>
-              <em>required</em>
-          </td>
-        </tr>
-        <tr>
-          <td><code>allow_local_infile</code></td>
-          <td>
-                <code>boolean</code>
-          </td>
-          <td><p>Local infile is allowed when the value is True</p></td>
-          <td>
-                <code>False</code>
-          </td>
-        </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Returns:</strong></p>
-  <table>
-    <thead>
-      <tr>
-<th>Name</th>        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-<td><code>result</code></td>          <td>
-                <code>str</code>
-          </td>
-          <td><p>Value is 'OK' when successful</p></td>
-        </tr>
-    </tbody>
-  </table>
-
-      <details class="quote">
-        <summary>Source code in <code>honeydew/mysql.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">password</span><span class="p">,</span> <span class="n">allow_local_infile</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Instantiate a DB connector.</span>
-<span class="sd">    Args:</span>
-<span class="sd">        host (str): Database host </span>
-<span class="sd">        port (str): Database port</span>
-<span class="sd">        user (str): Username</span>
-<span class="sd">        password (str): Password</span>
-<span class="sd">        allow_local_infile (boolean): Local infile is allowed when the value is True</span>
-<span class="sd">    Returns:</span>
-<span class="sd">        result (str): Value is &#39;OK&#39; when successful</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">host</span> <span class="o">=</span> <span class="n">host</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">port</span> <span class="o">=</span> <span class="n">port</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">password</span> <span class="o">=</span> <span class="n">password</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">allow_local_infile</span> <span class="o">=</span> <span class="n">allow_local_infile</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span> <span class="o">=</span> <span class="n">sql</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span>
-        <span class="n">port</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">,</span>
-        <span class="n">user</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">,</span>
-        <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span>
-        <span class="n">ssl_disabled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">autocommit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-        <span class="n">allow_local_infile</span><span class="o">=</span><span class="kc">True</span>
-    <span class="p">)</span>    
-    <span class="bp">self</span><span class="o">.</span><span class="n">db_cursor</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">db_connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">allow_local_infile</span><span class="p">:</span>
-        <span class="n">query_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;SET GLOBAL local_infile=1&quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">db_cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">query_str</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-      </details>
-  </div>
-
-</div>
 
 <div class="doc doc-object doc-function">
 
