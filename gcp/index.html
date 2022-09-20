@@ -296,6 +296,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#honeydew.gcp.GcpConnector.gcs_upload_single_file" class="md-nav__link">
+    gcs_upload_single_file()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -426,6 +433,13 @@
           <li class="md-nav__item">
   <a href="#honeydew.gcp.GcpConnector.gcs_download_single_file" class="md-nav__link">
     gcs_download_single_file()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#honeydew.gcp.GcpConnector.gcs_upload_single_file" class="md-nav__link">
+    gcs_upload_single_file()
   </a>
   
 </li>
@@ -652,7 +666,26 @@
 <span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
-<span class="normal">136</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">GcpConnector</span><span class="p">:</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">GcpConnector</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Instantiate a GCP connector.</span>
 <span class="sd">    Args:</span>
@@ -782,6 +815,25 @@
             <span class="n">blob</span><span class="o">.</span><span class="n">download_to_filename</span><span class="p">(</span><span class="n">destination_uri</span><span class="p">)</span>
         <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;OK&#39;</span>   
         <span class="k">return</span> <span class="n">results</span>
+
+    <span class="k">def</span> <span class="nf">gcs_upload_single_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">bucket_id</span><span class="p">,</span> <span class="n">local_file</span><span class="p">,</span> <span class="n">destination_blob</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Upload a single object from Google Cloud Storage (GCS)</span>
+<span class="sd">        Args:</span>
+<span class="sd">            project_id (str): Project ID</span>
+<span class="sd">            bucket_id (str): Bucket ID</span>
+<span class="sd">            local_file (str): Local file as source. Example: &#39;/local-directory/my-filename.txt&#39;</span>
+<span class="sd">            destination_blob (str): Destination blob in GCS bucket. Example: &#39;gcs-directory/my-filename.txt&#39;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            result (str): It returns &#39;OK&#39; when successful</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">gcs_client</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project_id</span><span class="p">)</span>
+        <span class="n">bucket</span> <span class="o">=</span> <span class="n">gcs_client</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="n">bucket_id</span><span class="p">)</span>
+        <span class="n">blob</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">blob</span><span class="p">(</span><span class="n">destination_blob</span><span class="p">)</span>
+        <span class="n">blob</span><span class="o">.</span><span class="n">upload_from_filename</span><span class="p">(</span><span class="n">local_file</span><span class="p">)</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;OK&#39;</span>
+        <span class="k">return</span> <span class="n">results</span>            
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -1510,6 +1562,135 @@
     <span class="n">blob</span><span class="o">.</span><span class="n">download_to_filename</span><span class="p">(</span><span class="n">destination_path</span><span class="p">)</span>
     <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;OK&#39;</span>
     <span class="k">return</span> <span class="n">results</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="honeydew.gcp.GcpConnector.gcs_upload_single_file" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">gcs_upload_single_file</span><span class="p">(</span><span class="n">project_id</span><span class="p">,</span> <span class="n">bucket_id</span><span class="p">,</span> <span class="n">local_file</span><span class="p">,</span> <span class="n">destination_blob</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Upload a single object from Google Cloud Storage (GCS)</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>project_id</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Project ID</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>bucket_id</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Bucket ID</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>local_file</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Local file as source. Example: '/local-directory/my-filename.txt'</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>destination_blob</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Destination blob in GCS bucket. Example: 'gcs-directory/my-filename.txt'</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Returns:</strong></p>
+  <table>
+    <thead>
+      <tr>
+<th>Name</th>        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+<td><code>result</code></td>          <td>
+                <code>str</code>
+          </td>
+          <td><p>It returns 'OK' when successful</p></td>
+        </tr>
+    </tbody>
+  </table>
+
+      <details class="quote">
+        <summary>Source code in <code>honeydew/gcp.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">gcs_upload_single_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">project_id</span><span class="p">,</span> <span class="n">bucket_id</span><span class="p">,</span> <span class="n">local_file</span><span class="p">,</span> <span class="n">destination_blob</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Upload a single object from Google Cloud Storage (GCS)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        project_id (str): Project ID</span>
+<span class="sd">        bucket_id (str): Bucket ID</span>
+<span class="sd">        local_file (str): Local file as source. Example: &#39;/local-directory/my-filename.txt&#39;</span>
+<span class="sd">        destination_blob (str): Destination blob in GCS bucket. Example: &#39;gcs-directory/my-filename.txt&#39;</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        result (str): It returns &#39;OK&#39; when successful</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">gcs_client</span> <span class="o">=</span> <span class="n">storage</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">project</span><span class="o">=</span><span class="n">project_id</span><span class="p">)</span>
+    <span class="n">bucket</span> <span class="o">=</span> <span class="n">gcs_client</span><span class="o">.</span><span class="n">bucket</span><span class="p">(</span><span class="n">bucket_id</span><span class="p">)</span>
+    <span class="n">blob</span> <span class="o">=</span> <span class="n">bucket</span><span class="o">.</span><span class="n">blob</span><span class="p">(</span><span class="n">destination_blob</span><span class="p">)</span>
+    <span class="n">blob</span><span class="o">.</span><span class="n">upload_from_filename</span><span class="p">(</span><span class="n">local_file</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="s1">&#39;OK&#39;</span>
+    <span class="k">return</span> <span class="n">results</span>            
 </code></pre></div></td></tr></table></div>
       </details>
   </div>
